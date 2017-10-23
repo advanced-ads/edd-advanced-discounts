@@ -28,7 +28,8 @@ function edd_advanced_discounts_exclude_lifetime_field( $discount_id = false, $d
                 </td>
         </tr><?php
         // input field for IDs of price options that should accept the discount
-        $price_options = ( $discount instanceof EDD_Discount ) ? implode( ',', $discount->get_meta( 'price_options', true ) ) : '';
+        $price_options_meta = ( $discount instanceof EDD_Discount ) ? $discount->get_meta( 'price_options', true) : false;
+        $price_options = ( $price_options_meta ) ? implode( ',', $price_options_meta ) : '';
         ?><tr>
                 <th scope="row" valign="top">
                         <label for="edd-price-options"><?php _e( 'Price Options', 'edd-advanced-discounts' ); ?></label>
